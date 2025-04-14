@@ -1,0 +1,10 @@
+extend type Query {
+    gameResult(gameId: ID!): GameResult
+    finishGame(gameId: ID!): GameResult
+}
+
+type GameResult {
+    gameId: ID!
+    result: String!
+    score: Int
+}

@@ -1,0 +1,14 @@
+extend type Query {
+    puzzles: [Puzzle]
+    puzzle(id: ID!): Puzzle
+}
+
+extend type Mutation {
+    newPuzzle(imageUrl: String!, difficulty: Difficulty!): Puzzle
+}
+
+type Puzzle {
+    id: ID!
+    imageUrl: String!
+    difficulty: Difficulty!
+}

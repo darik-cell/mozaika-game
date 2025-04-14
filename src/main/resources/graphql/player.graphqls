@@ -1,0 +1,22 @@
+type Query {
+    players: [Player]
+    player(id: ID!): Player
+    authenticatePlayer(player: PlayerInput!): Int
+}
+
+type Mutation {
+    newPlayer(player: PlayerInput!): Player
+}
+
+type Player {
+    id: ID!
+    username: String!
+    password: String!  # Пароль хранится в виде хэша (BCrypt)
+    gameSessions: [GameSession]
+}
+
+input PlayerInput {
+    id: ID
+    username: String!
+    password: String!
+}
