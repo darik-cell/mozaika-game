@@ -39,20 +39,9 @@ public class GameSession {
   @ToString.Exclude
   private Player player;
 
-  // Одна сессия содержит много паззловых элементов
-  @OneToMany(mappedBy = "gameSession", cascade = CascadeType.ALL, orphanRemoval = true)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "puzzles_id")
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
-  private List<PuzzlePiece> pieces = new ArrayList<>();
-
-  // Хелпер-методы для управления паззловыми элементами
-  public void addPuzzlePiece(PuzzlePiece piece) {
-    this.pieces.add(piece);
-    piece.setGameSession(this);
-  }
-
-  public void removePuzzlePiece(PuzzlePiece piece) {
-    this.pieces.remove(piece);
-    piece.setGameSession(null);
-  }
+  private Puzzle puzzle;
 }

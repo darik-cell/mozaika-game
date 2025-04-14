@@ -33,8 +33,10 @@ public class PuzzlePiece {
 
   private boolean isPlacedCorrectly;
 
+  private String imageUrl;
+
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "game_session_id")
+  @JoinColumn(name = "puzzles_id")
   @ToString.Exclude
-  private GameSession gameSession;
+  private Puzzle puzzle;
 }

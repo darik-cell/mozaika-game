@@ -32,8 +32,8 @@ dependencies {
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.1'
     runtimeOnly 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
     implementation 'org.springframework.security:spring-security-crypto'
-    compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
+    compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
