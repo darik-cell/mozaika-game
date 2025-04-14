@@ -7,5 +7,6 @@ type Puzzle {
     id: ID!
     imageUrl: String!
     difficulty: Difficulty!
+    name: String
     pieces: [PuzzlePiece!]!
 }
