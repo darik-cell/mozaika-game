@@ -12,7 +12,6 @@ type Player {
     id: ID!
     username: String!
     password: String!  # Пароль хранится в виде хэша (BCrypt)
-    gameSessions: [GameSession]
 }
 
 input PlayerInput {

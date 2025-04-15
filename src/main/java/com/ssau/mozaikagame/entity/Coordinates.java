@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Coordinates {
-  private float x;
-  private float y;
+  private Integer x;
+  private Integer y;
 }

@@ -65,32 +65,4 @@ public class ImageController {
             .contentType(MediaType.IMAGE_PNG)
             .body(resource);
   }
-
-  /**
-   * Возвращает коллекцию изображений (в виде Base64 строк) для всех фрагментов пазла с указанным puzzleId.
-   */
-  @GetMapping("/pieces/{puzzleId}")
-  public ResponseEntity<List<PuzzlePieceImageDTO>> getPuzzlePiecesImagesByPuzzle(@PathVariable Long puzzleId) {
-    List<PuzzlePiece> pieces = puzzlePieceRepository.findByPuzzleId(puzzleId);
-    if (pieces.isEmpty()) {
-      return ResponseEntity.notFound().build();
-    }
-
-    List<PuzzlePieceImageDTO> pieceImages = pieces.stream().map(piece -> {
-      String imagePath = piece.getImageUrl(); // путь, например, "/puzzles/avatar/avatar-0,0.png"
-      Resource resource = resourceLoader.getResource("classpath:" + imagePath);
-      if (!resource.exists()) {
-        return new PuzzlePieceImageDTO(piece.getId(), "not-found", "");
-      }
-      try (InputStream is = resource.getInputStream()) {
-        byte[] imageBytes = StreamUtils.copyToByteArray(is);
-        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-        return new PuzzlePieceImageDTO(piece.getId(), resource.getFilename(), base64Image);
-      } catch (IOException ex) {
-        throw new RuntimeException("Error reading image for piece id: " + piece.getId(), ex);
-      }
-    }).collect(Collectors.toList());
-
-    return ResponseEntity.ok(pieceImages);
-  }
 }

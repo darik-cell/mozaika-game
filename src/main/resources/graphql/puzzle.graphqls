@@ -10,3 +10,9 @@ type Puzzle {
     name: String
     pieces: [PuzzlePiece!]!
 }
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}

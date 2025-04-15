@@ -41,7 +41,18 @@
 </head>
 <body>
 <h1>Галерея пазлов</h1>
-
+<c:choose>
+    <c:when test="${param.msg == 'success'}">
+        <div style="padding:10px;border:1px solid #4caf50;background:#e8f5e9;color:#2e7d32;margin-bottom:15px;">
+            ✅ Поздравляем! Пазл полностью собран.
+        </div>
+    </c:when>
+    <c:when test="${param.msg == 'timeout'}">
+        <div style="padding:10px;border:1px solid #ff9800;background:#fff3e0;color:#e65100;margin-bottom:15px;">
+            ⏰ Время вышло. Попробуйте снова!
+        </div>
+    </c:when>
+</c:choose>
 <!-- Контейнер для карточек пазлов -->
 <div class="gallery">
     <!-- Перебираем коллекцию пазлов, переданную в модель под именем puzzles -->

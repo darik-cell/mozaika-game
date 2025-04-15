@@ -2,6 +2,10 @@ extend type Query {
     puzzlePieces(gameSessionId: ID!): [PuzzlePiece]
 }
 
+extend type Mutation {
+    updatePiecePosition(pieceId: ID!, newPosition: CoordinatesInput!): PuzzlePiece
+}
+
 type PuzzlePiece {
     id: ID!
     pieceNumber: Int!
@@ -12,11 +16,11 @@ type PuzzlePiece {
 }
 
 type Coordinates {
-    x: Float!
-    y: Float!
+    x: Int!
+    y: Int!
 }
 
 input CoordinatesInput {
-    x: Float!
-    y: Float!
+    x: Int!
+    y: Int!
 }
